@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 public class BakerController {
     private BakerService service;
@@ -34,12 +36,12 @@ public class BakerController {
     }
 
     @PutMapping("/bakers/update")
-    public ResponseEntity<Baker> update(Long id, Baker baker) {
+    public ResponseEntity<Baker> update(@PathVariable Long id, @Valid @RequestBody Baker baker) {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
 
     @DeleteMapping("/bakers/delete")
-    public ResponseEntity<Boolean> destroy(Long id) {
+    public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }

@@ -2,6 +2,7 @@ package com.zipcodewilmington.bakery.controllers;
 
 import com.zipcodewilmington.bakery.models.Muffin;
 import com.zipcodewilmington.bakery.services.MuffinService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MuffinController {
     private MuffinService service;
-
+    @Autowired
     public MuffinController(MuffinService service) {
         this.service = service;
     }
